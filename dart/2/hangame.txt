@@ -1,0 +1,7 @@
+doc
+game
+allow
+travel
+on
+yes
+they
