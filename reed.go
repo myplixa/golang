@@ -27,7 +27,7 @@ func main() {
 	//создпние map для выводы слов больше 3-х символов
 	bsx := make(map[string]int)
 	for _, v := range arr {
-	l := strings.Split(v, "");
+		l := strings.Split(v, "");
 		if(len(l) >=3){
 			_, ok := bsx[v]
 			if ok {

@@ -5,9 +5,13 @@ import (
 	"bufio"
 	"os"
 	"log"
+	"time"
+	"io/ioutil"
+	"strings"
+	"math/rand"
 )
 
-var entTru []string
+
 
 func enterLetter() string {
 	reader := bufio.NewReader(os.Stdin)
@@ -20,27 +24,94 @@ func enterLetter() string {
 	return string(l)
 }
 
-func findLetter() string {
-
-	word := "door"
+func findLetter(r, word string) bool {
 
 	for _, f := range word {
 
-		if (string(f) == enterLetter()) {
-			entTru = append(entTru, enterLetter())
-		} else {
-			entTru = append(entTru, "_")
+		if (string(f) == r) {
+			return true
+		}
+
+	}
+	return false
+}
+
+func iswinner(enttrue, word string) bool {
+
+	for _, f := range word {
+
+		if !findLetter(string(f), enttrue) {
+			return false
 		}
 	}
-	return findLetter()
+	return true
 }
+
+func wordstring(enttrue, word string) (ak string) {
+
+	for _, f := range word {
+
+		if (findLetter(string(f), enttrue)) {
+			ak = ak + string(f)
+		} else {
+			ak = ak + "_"
+		}
+	}
+	return
+}
+
+func random(min, max int) int {
+	rand.Seed(time.Now().Unix())
+	return rand.Intn(max - min) + min
+}
+
+func randomWord() string {
+
+	r, err := ioutil.ReadFile("./hangame.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	w := strings.Split(string(r), "\n")
+	myrand := random(0, (len(w) - 1))
+
+	return w[myrand]
+
+}
+
 
 func main() {
 
-	for {
+	var k int
+
+	word := randomWord()
+
+	var entTru string
+
+
+	for k = 0; k < len(word)+2; k ++ {
+
 		fmt.Print("введите символ: ")
 		text := enterLetter()
-		fmt.Printf("вы ввели = %s \n", text)
-		fmt.Println(entTru)
+
+		q := findLetter(text, word)
+
+		if q {
+			fmt.Println("симовл есть")
+			entTru = entTru + text
+		} else {
+			fmt.Println("символа нет")
+		}
+		fmt.Printf("status %s \n", wordstring(entTru, word))
+
+		if iswinner(entTru, word) {
+			break
+		}
+	}
+
+	if iswinner(entTru, word) {
+		fmt.Println("You winner")
+	} else {
+		fmt.Println("You LoL")
 	}
 }
