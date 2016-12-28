@@ -25,7 +25,7 @@ type Itogo struct {
 
 func main() {
 	var arrAns Itogo
-	db, err := sql.Open("mysql", "imedia:Ngfj9HslqmS23KSd@tcp(tellban.com:3306)/dbasterisk?charset=utf8")
+	db, err := sql.Open("mysql",)
 	checkErr(err)
 	defer db.Close()
 	// query
