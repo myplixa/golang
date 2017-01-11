@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"strings"
 )
 
 func readFiles() string {
@@ -14,12 +15,20 @@ func readFiles() string {
 	return(string(read))
 }
 
+//func EditFiles(r, letters) string  {
+//
+//}
+
 func main()  {
 
-	letters := []string{".", ",", "(", ")", "'", ":", ";", "-", "!", "?", "*", "\n", "\t", "\r"}
+	letters := []string{".", ",", "(", ")", "'", ":", ";", "-", "–", "!", "?", "*", "\n", "\t", "\r"}
 
-	fmt.Print(letters)
+	lower := strings.ToLower(readFiles())
 
-	fmt.Print(readFiles())
+	for f := range letters {
+		lower = strings.Replace(lower, letters[f], " ", -1)
+	}
+
+	fmt.Println(lower)
 
 }
