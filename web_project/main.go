@@ -25,9 +25,10 @@ type Itogo struct {
 
 func main() {
 	var arrAns Itogo
-	db, err := sql.Open("mysql",)
+	db, err := sql.Open("mysql", "imedia:Ngfj9HslqmS23KSd@tcp(tellban.com:3306)/dbasterisk?charset=utf8")
 	checkErr(err)
 	defer db.Close()
+
 	// query
 	rows, err := db.Query("SELECT calldate, dst, src, lastapp, channel, dcontext, dstchannel, disposition FROM cdr WHERE src LIKE '8123091684' AND dst LIKE '%' AND DATE_FORMAT(calldate, '%d-%m-%Y') = '21-03-2016'")
 	checkErr(err)
