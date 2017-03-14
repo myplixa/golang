@@ -2,4 +2,4 @@
 export GOROOT=/usr/local/go
 export GOPATH=~/Documents/go_simple/dart/2/2.2/
 
-go run main.go
+go run main.go < text/files_1.txt

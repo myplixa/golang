@@ -1,22 +1,18 @@
 package main
 
 import (
-	//"io/ioutil"
-	//"log"
-	//"fmt"
-	//"os"
-	"calculate"
-
+	"fmt"
+	"os"
+	"io/ioutil"
+	"log"
 )
 
 func main() {
 
-	//b, err := ioutil.ReadAll(os.Stdin)
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//
-	//fmt.Printf("%s \n", b)\\
+	b, err := ioutil.ReadAll(os.Stdin)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	calculate.Hello()
+	fmt.Println(b)
 }

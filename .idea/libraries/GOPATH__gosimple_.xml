@@ -41,6 +41,7 @@
       <root url="file:///usr/local/go/src/index" />
       <root url="file:///usr/local/go/src/vendor" />
       <root url="file:///usr/local/go/src/strings" />
+      <root url="file:///usr/local/go/src/plugin" />
       <root url="file:///usr/local/go/src/expvar" />
       <root url="file:///usr/local/go/src/sync" />
       <root url="file:///usr/local/go/src/bufio" />
@@ -86,6 +87,7 @@
       <root url="file:///usr/local/go/src/index" />
       <root url="file:///usr/local/go/src/vendor" />
       <root url="file:///usr/local/go/src/strings" />
+      <root url="file:///usr/local/go/src/plugin" />
       <root url="file:///usr/local/go/src/expvar" />
       <root url="file:///usr/local/go/src/sync" />
       <root url="file:///usr/local/go/src/bufio" />
