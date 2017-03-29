@@ -1,18 +1,25 @@
 package main
 
 import (
-	"fmt"
 	"os"
-	"io/ioutil"
-	"log"
+//	"calculate"
+	"fmt"
+//	"runefreq"
+	"stringfreq"
+	"calculate"
+	"runefreq"
 )
 
 func main() {
 
-	b, err := ioutil.ReadAll(os.Stdin)
-	if err != nil {
-		log.Fatal(err)
+	i := calculate.Calc(os.Stdin)
+	fmt.Printf("the number of characters = %d\n",i)
+
+ 	m := runefreq.Calc(os.Stdin)
+	for r, c := range m {
+		fmt.Printf("%#U = %d\n", r, c)
 	}
 
-	fmt.Println(b)
+ 	s := stringfreq.StringFreq(os.Stdin)
+	fmt.Println(s)
 }
