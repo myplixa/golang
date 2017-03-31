@@ -2,14 +2,30 @@ package stringfreq
 
 import (
 	"io"
-	"bytes"
+	"bufio"
 )
 
+func Calc(stream io.Reader) map[string]int {
 
-func StringFreq(stream io.Reader) string {
+	reader := bufio.NewReader(stream)
+	stringfreg := make(map[string]int)
 
-	reader := new(bytes.Buffer)
-	reader.ReadFrom(stream)
+	for  {
+		word, err := ReadWord(reader)
 
-	return reader.String()
+		if i, ok := stringfreg[word]; ok {
+			i ++
+			stringfreg[word] = i
+		} else {
+			stringfreg[word] = 1
+		}
+	if err != nil {
+		break
+		}
+	}
+	return stringfreg
+}
+
+func ReadWord(reader *bufio.Reader) (string, error) {
+
 }
